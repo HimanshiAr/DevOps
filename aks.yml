@@ -8,15 +8,15 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nginx
+      app: MyApp
   template:
     metadata:
       labels:
-        app: nginx
+        app: MyApp
     spec:
       containers:
-      - name: nginxcont
-        image: nginx:1.14.2
+      - name: MyAppContainer
+        image: MyAppImagePath:version
         resources:
           requests:
             cpu: 100m
@@ -27,3 +27,15 @@ spec:
         ports:
         - containerPort: 80
           name: port80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: DonetAppLB
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+  selector:
+    app: MyApp
+  

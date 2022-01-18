@@ -32,3 +32,5 @@ git branch -d <branch name> --deletes a branch if it has no pending merges
 git branch -D <branch name> --deletes a branch even if it has pending merges
 
 git push origin :<branchname> --deletes remote branch
+
+git config --global ssl.verify false
